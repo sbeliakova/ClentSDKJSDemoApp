@@ -2,7 +2,7 @@ const http = require('http');
 const url = require('url');
 
 const hostname = '127.0.0.1';
-const port = 8002;
+const port = 8003;
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
@@ -10,17 +10,16 @@ const server = http.createServer((req, res) => {
   var url_parts = url.parse(req.url, true);
   var query = url_parts.query;
   answer = `[
-      {"action": "record"},
-      {"action":"connect",
-      "from":"",
-      "endpoint":
-        [
-            {"type":"phone",
-            "number":"${query.to}"}
-        ]}, 
-        {
-        "action": "conversation",
-        "name": ""}]`
+    {"action":"connect",
+    "from":"447418343509",
+    "endpoint":
+      [
+          {"type":"phone",
+          "number":"${query.to}"}
+      ]}, 
+      {
+      "action": "conversation",
+      "name": "Daniel"}]`
   res.end(answer);
 });
 
