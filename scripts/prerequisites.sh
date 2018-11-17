@@ -4,6 +4,7 @@
 PRIVATE_KEY_PATH=
 YOUR_APP_ID=
 USER_NAME=
+CONVERSATION_NAME=
 
 echo PRIVATE_KEY_PATH is $PRIVATE_KEY_PATH
 
@@ -16,7 +17,6 @@ echo "I am in: " pwd
 #creating a conversation
 echo "Creating a conversation"
 
-CONVERSATION_NAME=C7
 CONVERSATION_ID=$(nexmo conversation:create display_name=CONVERSATION_NAME)
 YOUR_CONVERSATION_ID=$(echo $CONVERSATION_ID | cut -d':' -f2| sed -e 's/^ *//')
 echo "YOUR_CONVERSATION_ID is $YOUR_CONVERSATION_ID"
