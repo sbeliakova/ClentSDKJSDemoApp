@@ -11,7 +11,7 @@ const server = http.createServer((req, res) => {
   var query = url_parts.query;
   answer = `[
     {"action":"connect",
-    "from":"447418343509",
+    "from":"",
     "endpoint":
       [
           {"type":"phone",
@@ -19,7 +19,7 @@ const server = http.createServer((req, res) => {
       ]}, 
       {
       "action": "conversation",
-      "name": "Daniel"}]`
+      "name": ""}]`
   res.end(answer);
 });
 
