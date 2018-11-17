@@ -34,7 +34,7 @@ echo YOUR_MEMBER_ID is $YOUR_MEMBER_ID
 #check the member list of the conversation. make sure that the member is added
 nexmo member:list $YOUR_CONVERSATION_ID -v
 
-#creat USER_JWT
+#create USER_JWT
 USER_JWT="$(nexmo jwt:generate ./private.key sub=$USER_NAME exp=$(($(date +%s)+86400)) acl='{"paths":{"/v1/users/**":{},"/v1/conversations/**":{},"/v1/sessions/**":{},"/v1/devices/**":{},"/v1/image/**":{},"/v3/media/**":{},"/v1/applications/**":{},"/v1/push/**":{},"/v1/knocking/**":{}}}' application_id=d5570656-2c87-4eef-a640-c3987cb81a2d)"
 
 echo "USER_JWT: $USER_JWT"
