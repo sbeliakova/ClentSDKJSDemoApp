@@ -17,7 +17,7 @@ echo "I am in: " pwd
 #creating a conversation
 echo "Creating a conversation"
 
-CONVERSATION_ID=$(nexmo conversation:create display_name=CONVERSATION_NAME)
+CONVERSATION_ID=$(nexmo conversation:create display_name=$CONVERSATION_NAME)
 YOUR_CONVERSATION_ID=$(echo $CONVERSATION_ID | cut -d':' -f2| sed -e 's/^ *//')
 echo "YOUR_CONVERSATION_ID is $YOUR_CONVERSATION_ID"
 
