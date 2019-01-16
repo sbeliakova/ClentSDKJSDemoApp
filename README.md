@@ -1,4 +1,4 @@
-# JavaScript examples for Stitch
+# JavaScript quickstart guide for ClientSDK
 
 This repository contains the JS examples of using Stitch which can help to reproduce the issues. 
 
