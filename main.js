@@ -1,5 +1,5 @@
-const USER_JWT = '';
-const SECOND_USER_JWT = '';
+const USER_JWT = ''
+const SECOND_USER_JWT = ''
 const YOUR_CONVERSATION_ID = '' ;
 
  class ChatApp {
@@ -167,17 +167,19 @@ const YOUR_CONVERSATION_ID = '' ;
   }
 
   updateConversationsList(conversations) {
-
+    console.log("Start updating conversation list")
     let conversationsElement = document.createElement("div")
     conversationsElement.classList = 'list-group'
-    for (let id in conversations) {
+      for(const conv_id of conversations.keys()) {
+      console.log("Conversation: " + conversations.get(conv_id))
       let conversationElement = document.createElement('button')
       conversationElement.type = 'button'
       conversationElement.classList = 'list-group-item list-group-item-action'
-      conversationElement.textContent = conversations[id].display_name
-      conversationElement.addEventListener("click", () => this.setupConversationEvents(conversations[id]))
+      conversationElement.textContent = conversations.get(conv_id).display_name
+      conversationElement.addEventListener("click", () => this.setupConversationEvents(conversations.get(conv_id)))
       conversationsElement.appendChild(conversationElement)
     }
+    console.log()
     if (!conversationsElement.childNodes.length) {
       conversationsElement.textContent = "You are not a member of any conversations"
     }
@@ -188,7 +190,8 @@ const YOUR_CONVERSATION_ID = '' ;
 
   listConversations(userToken) {
     new ConversationClient({
-        debug: true
+        debug: true, 
+        log_reporter: { enabled : true }
       })
       .login(userToken)
       .then(app => {
@@ -202,8 +205,8 @@ const YOUR_CONVERSATION_ID = '' ;
             this.showCallIncoming(call.from)
           } else {
             console.log("This is inbound call: " + this.call);
-            this.showCallIncoming(call.from);
-            // this.showCallMembers("unknown")
+            //this.showCallIncoming(call.from);
+            this.showCallMembers("unknown")
           }
         })
 
@@ -266,12 +269,14 @@ const YOUR_CONVERSATION_ID = '' ;
         // Older browsers may not have srcObject
         if ("srcObject" in this.audio) {
           this.audio.srcObject = stream;
+          console.log("media:stream");
         } else {
           // Avoid using this in new browsers, as it is going away.
           this.audio.src = window.URL.createObjectURL(stream);
         }
         this.audio.onloadedmetadata = () => {
           this.audio.play();
+          console.log("media:onLoad");
         }
         this.eventLogger('member:media')()
       }).catch(this.errorLogger)
